@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: analyse-face-api
+  name: detect-crack-signs
 spec:
   type: NodePort
   selector:
-    app: analyse-face-api
+    app: detect-crack-signs
   ports:
     - port: 5000
       nodePort: 30500
@@ -13,41 +13,41 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: analyse-face-api
+  name: detect-crack-signs
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: analyse-face-api
+      app: detect-crack-signs
   template:
     metadata:
       labels:
-        app: analyse-face-api
+        app: detect-crack-signs
     spec:
       containers:
-        - name: analyse-face-api
-          image: zaka4ai/solution-analyse-face-api:latest
+        - name: detect-crack-signs
+          image: FinalProject/solution-detect-crack-signs:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
           env:
             - name: PORT
               value: "5000"
-            - name: FACE_DETECTION_URL
-              value: "http://detect-face-api:5001/detect_faces"
-            - name: GENDER_DETECTION_URL
-              value: "http://detect-gender-api:5002/detect_gender"
-            - name: AGE_DETECTION_URL
-              value: "http://detect-age-api:5003/detect_age"
+            - name: MERGED_CRACK_DETECTION_URL
+              value: "http://host.docker.internal:5001/BuildingCrackDetection"
+            - name: ROAD_CRACK_DETECTION_URL
+              value: "http://host.docker.internal:5002/RoadCrackDetection"
+            - name: ROAD_TRAFFIC_SIGN_DETECTION_URL
+              value: "http://host.docker.internal:5003/TrafficSignDetection"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: detect-face-api
+  name: detect-building-crack-api
 spec:
   type: NodePort
   selector:
-    app: detect-face-api
+    app: detect-building-crack-api
   ports:
     - port: 5001
       nodePort: 30501
@@ -55,20 +55,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: detect-face-api
+  name: detect-building-crack-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: detect-face-api
+      app: detect-building-crack-api
   template:
     metadata:
       labels:
-        app: detect-face-api
+        app: detect-building-crack-api
     spec:
       containers:
-        - name: detect-face-api
-          image: zaka4ai/solution-detect-face-api:latest
+        - name: detect-building-crack-api
+          image: FinalProject/solution-detect-building-crack-api:latest
           stdin: true
           tty: true
           ports:
@@ -80,11 +80,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: detect-gender-api
+  name: detect-road-crack-api
 spec:
   type: NodePort
   selector:
-    app: detect-gender-api
+    app: detect-road-crack-api
   ports:
     - port: 5002
       nodePort: 30502
@@ -92,20 +92,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: detect-gender-api
+  name: detect-road-crack-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: detect-gender-api
+      app: detect-road-crack-api
   template:
     metadata:
       labels:
-        app: detect-gender-api
+        app: detect-road-crack-api
     spec:
       containers:
-        - name: detect-gender-api
-          image: zaka4ai/solution-detect-gender-api:latest
+        - name: detect-road-crack-api
+          image: FinalProject/solution-detect-road-crack-api:latest
           stdin: true
           tty: true
           ports:
@@ -117,11 +117,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: detect-age-api
+  name: detect-road-sign-api
 spec:
   type: NodePort
   selector:
-    app: detect-age-api
+    app: detect-road-sign-api
   ports:
     - port: 5003
       nodePort: 30503
@@ -129,20 +129,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: detect-age-api
+  name: detect-road-sign-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: detect-age-api
+      app: detect-road-sign-api
   template:
     metadata:
       labels:
-        app: detect-age-api
+        app: detect-road-sign-api
     spec:
       containers:
-        - name: detect-age-api
-          image: zaka4ai/solution-detect-age-api:latest
+        - name: detect-road-sign-api
+          image: zaka4ai/solution-detect-road-sign-api:latest
           stdin: true
           tty: true
           ports:
