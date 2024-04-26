@@ -1,0 +1,152 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: analyse-face-api
+spec:
+  type: NodePort
+  selector:
+    app: analyse-face-api
+  ports:
+    - port: 5000
+      nodePort: 30500
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analyse-face-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: analyse-face-api
+  template:
+    metadata:
+      labels:
+        app: analyse-face-api
+    spec:
+      containers:
+        - name: analyse-face-api
+          image: zaka4ai/solution-analyse-face-api:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          env:
+            - name: PORT
+              value: "5000"
+            - name: FACE_DETECTION_URL
+              value: "http://detect-face-api:5001/detect_faces"
+            - name: GENDER_DETECTION_URL
+              value: "http://detect-gender-api:5002/detect_gender"
+            - name: AGE_DETECTION_URL
+              value: "http://detect-age-api:5003/detect_age"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: detect-face-api
+spec:
+  type: NodePort
+  selector:
+    app: detect-face-api
+  ports:
+    - port: 5001
+      nodePort: 30501
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: detect-face-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: detect-face-api
+  template:
+    metadata:
+      labels:
+        app: detect-face-api
+    spec:
+      containers:
+        - name: detect-face-api
+          image: zaka4ai/solution-detect-face-api:latest
+          stdin: true
+          tty: true
+          ports:
+            - containerPort: 5001
+          env:
+            - name: PORT
+              value: "5001"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: detect-gender-api
+spec:
+  type: NodePort
+  selector:
+    app: detect-gender-api
+  ports:
+    - port: 5002
+      nodePort: 30502
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: detect-gender-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: detect-gender-api
+  template:
+    metadata:
+      labels:
+        app: detect-gender-api
+    spec:
+      containers:
+        - name: detect-gender-api
+          image: zaka4ai/solution-detect-gender-api:latest
+          stdin: true
+          tty: true
+          ports:
+            - containerPort: 5002
+          env:
+            - name: PORT
+              value: "5002"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: detect-age-api
+spec:
+  type: NodePort
+  selector:
+    app: detect-age-api
+  ports:
+    - port: 5003
+      nodePort: 30503
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: detect-age-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: detect-age-api
+  template:
+    metadata:
+      labels:
+        app: detect-age-api
+    spec:
+      containers:
+        - name: detect-age-api
+          image: zaka4ai/solution-detect-age-api:latest
+          stdin: true
+          tty: true
+          ports:
+            - containerPort: 5003
+          env:
+            - name: PORT
+              value: "5003"
