@@ -8,7 +8,7 @@ import time
 app = Flask(__name__)
 
 def perform_object_detection(video_path):
-    model = YOLO(r'C:\Users\Antho\OneDrive\Desktop\Industrial AI Final Project - Docker\road_traffic_sign_detection\model\road_traffic_sign_detection_model.pt')
+    model = YOLO('road_traffic_sign_detection/model/road_traffic_sign_detection_model.pt')
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = model.to(device)
     current_time = time.strftime("%Y%m%d_%H%M%S")  # Get current timestamp
@@ -29,7 +29,7 @@ def upload_video():
             return render_template('index.html', message='No selected file')
         if file:
             # Save the uploaded video
-            video_path = "static/uploaded_video.mp4"
+            video_path = "road_traffic_sign_detection/static/uploaded_video.mp4"
             file.save(video_path)
             # Perform object detection
             dir_name = perform_object_detection(video_path)
@@ -48,4 +48,4 @@ def download_video():
     return send_file(video_path, as_attachment=True)
 
 if __name__ == '__main__':
-    app.run(debug=True,host = "127.0.0.1", port = os.getenv("PORT"))
+    app.run(debug=True,host = "0.0.0.0", port = os.getenv("PORT"))

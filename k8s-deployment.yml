@@ -34,11 +34,11 @@ spec:
             - name: PORT
               value: "5000"
             - name: MERGED_CRACK_DETECTION_URL
-              value: "http://host.docker.internal:5001/BuildingCrackDetection"
+              value: "http://127.0.0.1:5001/BuildingCrackDetection"
             - name: ROAD_CRACK_DETECTION_URL
-              value: "http://host.docker.internal:5002/RoadCrackDetection"
+              value: "http://127.0.0.1:5002/RoadCrackDetection"
             - name: ROAD_TRAFFIC_SIGN_DETECTION_URL
-              value: "http://host.docker.internal:5003/TrafficSignDetection"
+              value: "http://127.0.0.1:5003/TrafficSignDetection"
 ---
 apiVersion: v1
 kind: Service

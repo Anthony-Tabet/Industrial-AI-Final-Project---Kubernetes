@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     libgl1-mesa-glx ffmpeg libsm6 libxext6
 
 # Install PyTorch with CUDA support
-# RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 # Copy requirements file
 COPY requirements.txt .
@@ -17,7 +17,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Copy your application code
-COPY . .
+COPY . /app
 
 # Expose any necessary ports
 EXPOSE 5001
