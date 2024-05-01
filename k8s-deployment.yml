@@ -101,7 +101,7 @@ spec:
   template:
     metadata:
       labels:
-        app: detect-road-crack-api
+        app: detect-road-cracks-api
     spec:
       containers:
         - name: detect-road-cracks-api
