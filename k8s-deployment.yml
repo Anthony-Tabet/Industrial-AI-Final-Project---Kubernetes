@@ -36,7 +36,7 @@ spec:
             - name: MERGED_CRACK_DETECTION_URL
               value: "http://detect-building-cracks-api:5001/BuildingCrackDetection"
             - name: ROAD_CRACK_DETECTION_URL
-              value: "http://detect-road-crack-api:5002/RoadCrackDetection"
+              value: "http://detect-road-cracks-api:5002/RoadCrackDetection"
             - name: ROAD_TRAFFIC_SIGN_DETECTION_URL
               value: "http://detect-road-traffic-signs-api:5003/TrafficSignDetection"
 ---
