@@ -21,7 +21,7 @@ spec:
       app: detect-cracks-signs
   template:
     metadata:
-      labels:
+      labels: 
         app: detect-cracks-signs
     spec:
       containers:
@@ -68,7 +68,7 @@ spec:
     spec:
       containers:
         - name: detect-building-crack-api
-          image: tabetanthony/solution-detect-building-crack-api:latest
+          image: tabetanthony/detect-building-crack-api:latest
           stdin: true
           tty: true
           ports:
@@ -105,7 +105,7 @@ spec:
     spec:
       containers:
         - name: detect-road-cracks-api
-          image: tabetanthony/solution-detect-road-cracks-api:latest
+          image: tabetanthony/detect-road-cracks-api:latest
           stdin: true
           tty: true
           ports:
@@ -142,7 +142,7 @@ spec:
     spec:
       containers:
         - name: detect-road-traffic-signs-api
-          image: tabetanthony/solution-detect-road-traffic-signs-api:latest
+          image: tabetanthony/detect-road-traffic-signs-api:latest
           stdin: true
           tty: true
           ports:
