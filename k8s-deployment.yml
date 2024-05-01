@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: detect-cracks-signs
-          image: FinalProject/solution-detect-cracks-signs:latest
+          image: tabetanthony/solution-detect-cracks-signs:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
@@ -68,7 +68,7 @@ spec:
     spec:
       containers:
         - name: detect-building-crack-api
-          image: FinalProject/solution-detect-building-crack-api:latest
+          image: tabetanthony/solution-detect-building-crack-api:latest
           stdin: true
           tty: true
           ports:
@@ -105,7 +105,7 @@ spec:
     spec:
       containers:
         - name: detect-road-cracks-api
-          image: FinalProject/solution-detect-road-cracks-api:latest
+          image: tabetanthony/solution-detect-road-cracks-api:latest
           stdin: true
           tty: true
           ports:
@@ -142,7 +142,7 @@ spec:
     spec:
       containers:
         - name: detect-road-traffic-signs-api
-          image: FinalProject/solution-detect-road-traffic-signs-api:latest
+          image: tabetanthony/solution-detect-road-traffic-signs-api:latest
           stdin: true
           tty: true
           ports:
