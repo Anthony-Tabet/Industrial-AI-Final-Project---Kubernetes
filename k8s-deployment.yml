@@ -142,7 +142,7 @@ spec:
     spec:
       containers:
         - name: detect-road-sign-api
-          image: zaka4ai/solution-detect-road-sign-api:latest
+          image: FinalProject/solution-detect-road-sign-api:latest
           stdin: true
           tty: true
           ports:
