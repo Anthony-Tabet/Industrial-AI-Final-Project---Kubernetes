@@ -7,8 +7,8 @@ spec:
   selector:
     app: detect-cracks-signs
   ports:
-    - port: 5000
-      nodePort: 30500
+    - port: 8000
+      nodePort: 30800
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -29,16 +29,16 @@ spec:
           image: tabetanthony/industrial_ai_finalproject_v1:detect-cracks-signs
           imagePullPolicy: Always
           ports:
-            - containerPort: 5000
+            - containerPort: 8000
           env:
             - name: PORT
-              value: "5000"
+              value: "8000"
             - name: MERGED_CRACK_DETECTION_URL
-              value: "http://detect-building-cracks-api:5001/BuildingCrackDetection"
+              value: "http://detect-building-cracks-api:8001/BuildingCrackDetection"
             - name: ROAD_CRACK_DETECTION_URL
-              value: "http://detect-road-cracks-api:5002/RoadCrackDetection"
+              value: "http://detect-road-cracks-api:8002/RoadCrackDetection"
             - name: ROAD_TRAFFIC_SIGN_DETECTION_URL
-              value: "http://detect-road-traffic-signs-api:5003/TrafficSignDetection"
+              value: "http://detect-road-traffic-signs-api:8003/TrafficSignDetection"
 ---
 apiVersion: v1
 kind: Service
@@ -49,8 +49,8 @@ spec:
   selector:
     app: detect-building-cracks
   ports:
-    - port: 5001
-      nodePort: 30501
+    - port: 8001
+      nodePort: 30801
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -72,10 +72,10 @@ spec:
           stdin: true
           tty: true
           ports:
-            - containerPort: 5001
+            - containerPort: 8001
           env:
             - name: PORT
-              value: "5001"
+              value: "8001"
 ---
 apiVersion: v1
 kind: Service
@@ -86,8 +86,8 @@ spec:
   selector:
     app: detect-road-cracks
   ports:
-    - port: 5002
-      nodePort: 30502
+    - port: 8002
+      nodePort: 30802
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -109,10 +109,10 @@ spec:
           stdin: true
           tty: true
           ports:
-            - containerPort: 5002
+            - containerPort: 8002
           env:
             - name: PORT
-              value: "5002"
+              value: "8002"
 ---
 apiVersion: v1
 kind: Service
@@ -123,8 +123,8 @@ spec:
   selector:
     app: detect-road-traffic-signs
   ports:
-    - port: 5003
-      nodePort: 30503
+    - port: 8003
+      nodePort: 30803
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -146,7 +146,7 @@ spec:
           stdin: true
           tty: true
           ports:
-            - containerPort: 5003
+            - containerPort: 8003
           env:
             - name: PORT
-              value: "5003"
+              value: "8003"
