@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: detect-cracks-signs
-          image: tabetanthony/solution-detect-cracks-signs:latest
+          image: tabetanthony/industrial_ai_finalproject_v1:detect-cracks-signs
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
@@ -43,11 +43,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: detect-building-crack-api
+  name: detect-building-cracks
 spec:
   type: NodePort
   selector:
-    app: detect-building-crack-api
+    app: detect-building-cracks
   ports:
     - port: 5001
       nodePort: 30501
@@ -55,20 +55,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: detect-building-crack-api
+  name: detect-building-cracks
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: detect-building-crack-api
+      app: detect-building-cracks
   template:
     metadata:
       labels:
-        app: detect-building-crack-api
+        app: detect-building-cracks
     spec:
       containers:
-        - name: detect-building-crack-api
-          image: tabetanthony/detect-building-crack-api:latest
+        - name: detect-building-cracks
+          image: tabetanthony/industrial_ai_finalproject_v1:detect-building-cracks
           stdin: true
           tty: true
           ports:
@@ -80,11 +80,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: detect-road-cracks-api
+  name: detect-road-cracks
 spec:
   type: NodePort
   selector:
-    app: detect-road-cracks-api
+    app: detect-road-cracks
   ports:
     - port: 5002
       nodePort: 30502
@@ -92,20 +92,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: detect-road-cracks-api
+  name: detect-road-cracks
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: detect-road-cracks-api
+      app: detect-road-cracks
   template:
     metadata:
       labels:
-        app: detect-road-cracks-api
+        app: detect-road-cracks
     spec:
       containers:
-        - name: detect-road-cracks-api
-          image: tabetanthony/detect-road-cracks-api:latest
+        - name: detect-road-cracks
+          image: tabetanthony/industrial_ai_finalproject_v1:detect-road-cracks
           stdin: true
           tty: true
           ports:
@@ -117,11 +117,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: detect-road-traffic-signs-api
+  name: detect-road-traffic-signs
 spec:
   type: NodePort
   selector:
-    app: detect-road-traffic-signs-api
+    app: detect-road-traffic-signs
   ports:
     - port: 5003
       nodePort: 30503
@@ -129,20 +129,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: detect-road-traffic-signs-api
+  name: detect-road-traffic-signs
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: detect-road-traffic-signs-api
+      app: detect-road-traffic-signs
   template:
     metadata:
       labels:
-        app: detect-road-traffic-signs-api
+        app: detect-road-traffic-signs
     spec:
       containers:
-        - name: detect-road-traffic-signs-api
-          image: tabetanthony/detect-road-traffic-signs-api:latest
+        - name: detect-road-traffic-signs
+          image: tabetanthony/industrial_ai_finalproject_v1:detect-road-traffic-signs
           stdin: true
           tty: true
           ports:
