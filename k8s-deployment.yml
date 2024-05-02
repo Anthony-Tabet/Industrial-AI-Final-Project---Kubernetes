@@ -34,12 +34,11 @@ spec:
             - name: PORT
               value: "8000"
             - name: MERGED_CRACK_DETECTION_URL
-              value: "http://detect-building-cracks:8001/BuildingCrackDetection"
+              value: "http://127.0.0.1:30801/BuildingCrackDetection"
             - name: ROAD_CRACK_DETECTION_URL
-              value: "http://detect-road-cracks:8002/RoadCrackDetection"
+              value: "http://127.0.0.1:30802/RoadCrackDetection"
             - name: ROAD_TRAFFIC_SIGN_DETECTION_URL
-              value: "http://detect-road-traffic-signs:8003/TrafficSignDetection"
-
+              value: "http://127.0.0.1:30803/TrafficSignDetection"
 ---
 apiVersion: v1
 kind: Service
@@ -74,9 +73,6 @@ spec:
           tty: true
           ports:
             - containerPort: 8001
-          volumeMounts:
-            - name: building-cracks-volume
-              mountPath: /app/building_crack_detection/static/
           env:
             - name: PORT
               value: "8001"
@@ -114,9 +110,6 @@ spec:
           tty: true
           ports:
             - containerPort: 8002
-          volumeMounts:
-            - name: road-cracks-volume
-              mountPath: /app/road_crack_detection/static/
           env:
             - name: PORT
               value: "8002"
@@ -154,9 +147,6 @@ spec:
           tty: true
           ports:
             - containerPort: 8003
-          volumeMounts:
-            - name: traffic-signs-volume
-              mountPath: /app/road_traffic_sign_detection/static/
           env:
             - name: PORT
               value: "8003"
