@@ -129,7 +129,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rdetect-road-traffic-signs
+  name: detect-road-traffic-signs
 spec:
   replicas: 1
   selector:
