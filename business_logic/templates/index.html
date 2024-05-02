@@ -83,15 +83,15 @@
     </script> -->
     <script>
         document.getElementById("roadCrackButton").addEventListener("click", function() {
-            sendButtonClickEvent("road_crack_detection");
+            sendButtonClickEvent("detect-road-cracks");
         });
     
         document.getElementById("buildingCrackButton").addEventListener("click", function() {
-            sendButtonClickEvent("building_crack_detection");
+            sendButtonClickEvent("detect-building-cracks");
         });
     
         document.getElementById("trafficSignButton").addEventListener("click", function() {
-            sendButtonClickEvent("traffic_sign_detection");
+            sendButtonClickEvent("detect-road-traffic-signs");
         });
     
         function sendButtonClickEvent(endpoint) {
