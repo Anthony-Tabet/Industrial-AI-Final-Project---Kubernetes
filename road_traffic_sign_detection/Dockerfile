@@ -7,6 +7,12 @@ RUN apt-get update && apt-get install -y \
 # Install PyTorch with CUDA support
 RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
+# Create necessary directories
+RUN mkdir -p road_traffic_sign_detection/static
+
+# Set permissions for the directory
+RUN chmod -R 777 road_traffic_sign_detection/static
+
 # Set working directory
 WORKDIR /app
 
