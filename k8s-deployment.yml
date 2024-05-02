@@ -43,11 +43,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: detect-building-cracks
+  name: building_crack_detection
 spec:
   type: NodePort
   selector:
-    app: detect-building-cracks
+    app: building_crack_detection
   ports:
     - port: 8001
       nodePort: 30801
@@ -55,19 +55,19 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: detect-building-cracks
+  name: building_crack_detection
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: detect-building-cracks
+      app: building_crack_detection
   template:
     metadata:
       labels:
-        app: detect-building-cracks
+        app: building_crack_detection
     spec:
       containers:
-        - name: detect-building-cracks
+        - name: building_crack_detection
           image: tabetanthony/industrial_ai_finalproject_v1:detect-building-cracks
           stdin: true
           tty: true
@@ -80,11 +80,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: detect-road-cracks
+  name: road_crack_detection
 spec:
   type: NodePort
   selector:
-    app: detect-road-cracks
+    app: road_crack_detection
   ports:
     - port: 8002
       nodePort: 30802
@@ -92,19 +92,19 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: detect-road-cracks
+  name: road_crack_detection
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: detect-road-cracks
+      app: road_crack_detection
   template:
     metadata:
       labels:
-        app: detect-road-cracks
+        app: road_crack_detection
     spec:
       containers:
-        - name: detect-road-cracks
+        - name: road_crack_detection
           image: tabetanthony/industrial_ai_finalproject_v1:detect-road-cracks
           stdin: true
           tty: true
@@ -117,11 +117,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: detect-road-traffic-signs
+  name: road_traffic_sign_detection
 spec:
   type: NodePort
   selector:
-    app: detect-road-traffic-signs
+    app: road_traffic_sign_detection
   ports:
     - port: 8003
       nodePort: 30803
@@ -129,19 +129,19 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: detect-road-traffic-signs
+  name: road_traffic_sign_detection
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: detect-road-traffic-signs
+      app: road_traffic_sign_detection
   template:
     metadata:
       labels:
-        app: detect-road-traffic-signs
+        app: road_traffic_sign_detection
     spec:
       containers:
-        - name: detect-road-traffic-signs
+        - name: road_traffic_sign_detection
           image: tabetanthony/industrial_ai_finalproject_v1:detect-road-traffic-signs
           stdin: true
           tty: true
