@@ -1,11 +1,11 @@
 FROM python:3.11.8
 
 # Install system dependencies
-# RUN apt-get update && apt-get install -y \
-#     libgl1-mesa-glx ffmpeg libsm6 libxext6
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx ffmpeg libsm6 libxext6
 
-# # Install PyTorch with CUDA support
-# RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# Install PyTorch with CUDA support
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 # Set working directory
 WORKDIR /app
