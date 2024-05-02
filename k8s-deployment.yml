@@ -30,9 +30,6 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
-          volumeMounts:
-            - name: road-cracks-volume
-              mountPath: /app/road_crack_detection/static/uploaded_videos
           env:
             - name: PORT
               value: "8000"
@@ -42,9 +39,7 @@ spec:
               value: "http://detect-road-cracks:8002/RoadCrackDetection"
             - name: ROAD_TRAFFIC_SIGN_DETECTION_URL
               value: "http://detect-road-traffic-signs:8003/TrafficSignDetection"
-  volumes:
-    - name: road-cracks-volume
-      emptyDir: {}
+
 ---
 apiVersion: v1
 kind: Service
@@ -81,13 +76,10 @@ spec:
             - containerPort: 8001
           volumeMounts:
             - name: building-cracks-volume
-              mountPath: /app/building_crack_detection/static/uploaded_videos
+              mountPath: /app/building_crack_detection/static/
           env:
             - name: PORT
               value: "8001"
-  volumes:
-    - name: building-cracks-volume
-      emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
@@ -124,13 +116,10 @@ spec:
             - containerPort: 8002
           volumeMounts:
             - name: road-cracks-volume
-              mountPath: /app/road_crack_detection/static/uploaded_videos
+              mountPath: /app/road_crack_detection/static/
           env:
             - name: PORT
               value: "8002"
-  volumes:
-    - name: road-cracks-volume
-      emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
@@ -167,10 +156,7 @@ spec:
             - containerPort: 8003
           volumeMounts:
             - name: traffic-signs-volume
-              mountPath: /app/road_traffic_sign_detection/static/uploaded_videos
+              mountPath: /app/road_traffic_sign_detection/static/
           env:
             - name: PORT
               value: "8003"
-  volumes:
-    - name: traffic-signs-volume
-      emptyDir: {}
