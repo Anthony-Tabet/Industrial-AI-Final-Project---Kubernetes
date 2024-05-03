@@ -16,6 +16,7 @@ RUN mkdir -p /app/building_crack_detection/model
 
 # Set permissions for the directory
 RUN chmod -R 777 /app/building_crack_detection/static
+RUN chmod -R 777 /app/building_crack_detection/model
 
 # Copy requirements file
 COPY requirements.txt .
