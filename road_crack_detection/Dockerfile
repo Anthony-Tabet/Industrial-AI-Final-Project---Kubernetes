@@ -18,6 +18,10 @@ RUN mkdir -p /app/road_crack_detection/model
 RUN chmod -R 777 /app/road_crack_detection/static
 RUN chmod -R 777 /app/road_crack_detection/model
 
+# Copy model file
+COPY road_crack_detection/model/crack_detection_model.pt /app/road_crack_detection/model/
+COPY road_crack_detection/model/pothole_detection_model.pt /app/road_crack_detection/model/
+
 # Copy requirements file
 COPY requirements.txt .
 

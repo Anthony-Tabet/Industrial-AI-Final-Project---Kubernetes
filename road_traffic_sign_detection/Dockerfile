@@ -18,6 +18,9 @@ RUN mkdir -p /app/road_traffic_sign_detection/model
 RUN chmod -R 777 /app/road_traffic_sign_detection/static
 RUN chmod -R 777 /app/road_traffic_sign_detection/model
 
+# Copy model file
+COPY road_traffic_sign_detection/model/road_traffic_sign_detection_model.pt /app/road_traffic_sign_detection/model/
+
 # Copy requirements file
 COPY requirements.txt .
 
