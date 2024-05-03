@@ -11,11 +11,11 @@ RUN apt-get update && apt-get install -y \
 RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 # Create necessary directories
-RUN mkdir -p app/building_crack_detection/static
-RUN mkdir -p app/building_crack_detection/model
+RUN mkdir -p /app/building_crack_detection/static
+RUN mkdir -p /app/building_crack_detection/model
 
 # Set permissions for the directory
-RUN chmod -R 777 app/building_crack_detection/static
+RUN chmod -R 777 /app/building_crack_detection/static
 
 # Copy requirements file
 COPY requirements.txt .

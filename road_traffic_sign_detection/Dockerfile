@@ -1,5 +1,8 @@
 FROM python:3.11.8
 
+# Set working directory
+WORKDIR /app
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     libgl1-mesa-glx ffmpeg libsm6 libxext6
@@ -8,13 +11,11 @@ RUN apt-get update && apt-get install -y \
 RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 # Create necessary directories
-RUN mkdir -p road_traffic_sign_detection/static
+RUN mkdir -p /app/road_traffic_sign_detection/static
+RUN mkdir -p /app/road_traffic_sign_detection/model
 
 # Set permissions for the directory
-RUN chmod -R 777 road_traffic_sign_detection/static
-
-# Set working directory
-WORKDIR /app
+RUN chmod -R 777 /app/road_traffic_sign_detection/static
 
 # Copy requirements file
 COPY requirements.txt .
