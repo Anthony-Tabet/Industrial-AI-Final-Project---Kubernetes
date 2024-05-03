@@ -19,7 +19,7 @@ RUN chmod -R 777 /app/building_crack_detection/static
 RUN chmod -R 777 /app/building_crack_detection/model
 
 # Copy model file
-COPY building_crack_detection/model/building_crack_detection.pt /app/road_traffic_sign_detection/model/
+COPY model/building_crack_detection.pt /app/building_crack_detection/model/
 
 # Copy requirements file
 COPY requirements.txt .
